@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AnbuExam-Admin</title><link rel="stylesheet" href="style.css">
+</head><body>
+<main class="page"><section class="card wide">
+  <div class="brand">AnbuExam admin</div>
+  <h1>Examination settings</h1>
+  <div class="note warn"><b>Deployment:</b> Settings save in this browser first. Use <b>Copy settings for deployment</b> and publish the updated <code>script.js</code> for students to receive the same exam setup from any device. The shared exam password in the deployed file is visible in the site source.
+  <form id="cfgForm" novalidate>
+    <label for="name">Examination name</label><input type="text" id="name">
+    <label for="instructions">Student instructions</label><textarea id="instructions"></textarea>
+    <label for="formUrl">Google Form URL</label><input type="url" id="formUrl" placeholder="https://docs.google.com/forms/d/…/viewform?embedded=true">
+    <label for="password">Shared examination password</label><input type="password" id="password" autocomplete="new-password" placeholder="Give this password to all students">
+    <div class="row">
+      <div><label for="duration">Duration (minutes)</label><input type="number" id="duration" min="1" max="600"></div>
+      <div><label for="graceSeconds">Return grace period (seconds, 0 = off)</label><input type="number" id="graceSeconds" min="0" max="300"></div>
+    </div>
+    <div class="row">
+      <div><label for="start">Exam start time (optional)</label><input type="datetime-local" id="start"></div>
+      <div><label for="end">Exam end time (optional)</label><input type="datetime-local" id="end"></div>
+    </div>
+    <label class="check"><input type="checkbox" id="fullscreen"> Enable fullscreen mode</label>
+    <label class="check"><input type="checkbox" id="tabDetect"> Enable tab-switch / focus-loss detection</label>
+    <label class="check"><input type="checkbox" id="autoFinish"> Close the exam automatically when the form is submitted</label>
+    <div class="note">Submission is detected when the form page navigates to Google's confirmation page. Turn this off for forms with several sections or a required Google sign-in, which can navigate before submission.</div>
+    <div class="row">
+      <div><label for="maxViolations">Maximum allowed violations</label><input type="number" id="maxViolations" min="1" max="20"></div>
+      <div><label for="action">Violation action</label>
+        <select id="action">
+          <option value="warn">Warning only</option>
+          <option value="limit">End examination after the maximum violations (default 3)</option>
+          <option value="immediate">End examination immediately</option>
+        </select></div>
+    </div>
+    <div class="err" id="err"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+      <button class="btn" type="submit">Save settings</button>
+      <a class="btn sec" id="open" href="index.html" target="_blank" rel="noopener">Open student exam page</a>
+      <button class="btn sec" type="button" id="copy">Copy student link</button>
+      <button class="btn sec" type="button" id="export">Copy settings for deployment</button>
+      <button class="btn sec" type="button" id="reset">Clear this browser's exam session</button>
+    </div>
+    <div class="ok" id="ok"></div>
+    <div class="note"><b>Limits of a web page:</b> it cannot block Alt+Tab, the Windows key, ESC, closing the browser, developer tools, screenshots or screen recording. SmartExam only <i>detects</i> fullscreen exits, tab switches and focus loss. Google Forms handles submission itself.</div>
+  </form>
+</section></main>
+<script src="script.js"></script><script src="admin.js"></script>
+</body></html>

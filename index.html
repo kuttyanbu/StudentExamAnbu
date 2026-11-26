@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AnbuExam-Student Registration</title><link rel="stylesheet" href="style.css">
+</head><body>
+<main class="page"><section class="card">
+  <div class="brand">AnbuExam</div>
+  <h1 id="examName">Examination</h1>
+  <p class="sub">Enter your email address and the shared examination password given by your administrator.</p>
+  <div id="banner" class="note warn hidden"></div>
+  <form id="regForm" novalidate>
+    <label for="email">Email address</label><input type="email" id="email" name="email" autocomplete="email"><div class="err" id="e-email"></div>
+    <label for="password">Examination password</label><input type="password" id="password" name="password" autocomplete="off"><div class="err" id="e-password"></div>
+    <div class="err" id="e-form"></div>
+    <button class="btn block" type="submit">Register and continue</button>
+  </form>
+</section></main>
+<script src="script.js"></script>
+</body></html>

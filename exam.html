@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AnbuExam</title><link rel="stylesheet" href="style.css">
+</head><body>
+
+<!-- Instructions / start / resume -->
+<main class="page" id="screenReady"><section class="card wide">
+  <div class="brand">AnbuExam</div>
+  <h1 id="rName"></h1>
+  <p class="meta" id="rStudent"></p>
+  <h3 style="margin-top:18px">Instructions</h3>
+  <div class="instr" id="rInstr"></div>
+  <ul class="meta" id="rFacts"></ul>
+  <div class="note warn" id="rResume" style="display:none"></div>
+  <div class="err" id="rErr"></div>
+  <button class="btn" id="startBtn" type="button">Start Examination</button>
+  <a class="btn sec" href="index.html" id="backLink">Back</a>
+</section></main>
+
+<!-- Exam -->
+<div id="screenExam" class="hidden">
+  <header class="top">
+    <div><div class="t" id="hName"></div></div>
+    <div class="mid"><div class="s" id="hStudent"></div></div>
+    <div class="viol" id="hViol"></div>
+    <div class="timer" id="timer" aria-live="off">00:00:00</div>
+  </header>
+  <div class="submit-reminder hidden" id="submitReminder" role="status" aria-live="polite">
+    <strong>One minute left:</strong> Complete the form and press its <strong>Submit</strong> button manually. Your exam is not validated until you submit the form.
+  </div>
+  <div class="frame"><iframe id="examFrame" title="Online Examination" allow="fullscreen" width="100%" height="100%" frameborder="0"></iframe></div>
+</div>
+<div class="toast hidden" id="toast" role="status"></div>
+
+<!-- Warning modal -->
+<div class="overlay hidden" id="warnOverlay" role="alertdialog" aria-modal="true" aria-labelledby="wTitle">
+  <div class="modal">
+    <div class="ico" aria-hidden="true">⚠️</div>
+    <h2 id="wTitle">WARNING!</h2>
+    <p id="wMsg"></p>
+    <p class="big" id="wCount"></p>
+    <p class="big" id="wGrace"></p>
+    <p id="wHelp">Please return to fullscreen.</p>
+    <div class="err" id="wErr"></div>
+    <button class="btn" id="returnBtn" type="button">Return to examination</button>
+  </div>
+</div>
+
+<!-- Final-minute submission prompt -->
+<div class="overlay hidden" id="submitOverlay" role="alertdialog" aria-modal="true" aria-labelledby="submitTitle">
+  <div class="modal submit-modal">
+    <div class="ico" aria-hidden="true">⏱</div>
+    <h2 id="submitTitle">One minute remaining</h2>
+    <p>Please finish the Google Form and press <strong>Submit</strong> manually. Your exam is not validated until the form is submitted. The exam timer continues while this message is open.</p>
+    <button class="btn" id="continueSubmitBtn" type="button">Return to the form</button>
+  </div>
+</div>
+
+<!-- Ended -->
+<main class="page hidden" id="screenEnded"><section class="card">
+  <div class="brand">SmartExam</div>
+  <h1 id="eTitle">Examination ended</h1>
+  <p id="eMsg"></p>
+  <dl><dt>Student</dt><dd id="eStudent"></dd><dt>Examination</dt><dd id="eExam"></dd><dt>Completed at</dt><dd id="eTime"></dd><dt>Violations</dt><dd id="eViol"></dd></dl>
+</section></main>
+
+<script src="script.js"></script><script src="exam.js"></script>
+</body></html>
